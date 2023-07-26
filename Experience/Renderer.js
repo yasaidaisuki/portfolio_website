@@ -11,6 +11,8 @@ export default class Renderer{
         this.canvas = this.experience.canvas;
         this.camera = this.experience.camera;
 
+        console.log(this.camera, this.camera.perspectiveCam);
+
         this.setRenderer();
     }
 
@@ -19,9 +21,9 @@ export default class Renderer{
             canvas: this.canvas,
             antialias: true
         });
-        this.renderer.physicallyCorrectLights = true;
+        this.renderer.useLegacyLights = true;
         // this is the regular setting
-        this.renderer.outputEncoding = THREE.sRGBEncoding
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace;
         // this can be changed
         this.renderer.toneMapping = THREE.LinearToneMapping;
         // mess with brightness
@@ -32,10 +34,11 @@ export default class Renderer{
     }
 
     resize() {
-
+        this.renderer.setPixelRatio(this.sizes.pixelRatio);
+        this.renderer.setSize(this.sizes.width, this.sizes.height);
     }
 
     update() {
-        
+        this.renderer.render(this.scene, this.camera.perspectiveCam);
     }
 }
