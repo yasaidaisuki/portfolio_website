@@ -33,6 +33,7 @@ export default class Camera{
             100
         );
         this.scene.add(this.perspectiveCam);
+        this.perspectiveCam.position.z = 5;
     }
 
     // resize() : resizes camera
