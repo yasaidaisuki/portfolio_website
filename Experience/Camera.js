@@ -19,8 +19,12 @@ export default class Camera{
 
     // createPerspectiveCam() : creates new perspective camera
     createPerspectiveCam() {
-        this.perspectiveCam = new THREE.PerspectiveCamera(35, this.sizes.aspect,0.1,1000);
+        this.perspectiveCam = new THREE.PerspectiveCamera(35,
+             this.sizes.aspect,
+             0.1,
+             1000);
         this.scene.add(this.perspectiveCam)
+        this.perspectiveCam.position.z = 5;
     }
 
     // createPerspectiveCam() : creates new ortho camera
@@ -34,8 +38,16 @@ export default class Camera{
             -100,
             100
         );
-        this.scene.add(this.perspectiveCam);
-        this.perspectiveCam.position.z = 5;
+        this.scene.add(this.orthoCam);
+        
+        const size = 10;
+        const divisions = 10;
+
+        const gridHelper = new THREE.GridHelper(size, divisions);
+        this.scene.add(gridHelper);
+
+        const axesHelper = new THREE.AxesHelper(10);
+        this.scene.add(axesHelper);
     }
 
     setOrbitControls() {
