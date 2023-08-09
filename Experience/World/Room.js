@@ -14,6 +14,20 @@ export default class Room {
     }
 
     setModel() {
+        // giving object lighting
+        this.actualRoom.children.forEach((child) => {
+            child.castShadow = true;
+            child.receiveShadow = true; 
+
+            // setting light for grouped children
+            if (child instanceof THREE.Group ) {
+                child.children.forEach((groupchild)=> {
+                    groupchild.castShadow = true;
+                    groupchild.receiveShadow = true;
+                }) 
+            }
+        });
+        
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.09,0.09,0.09);
         this.actualRoom.rotation.y = Math.PI;
