@@ -24,7 +24,13 @@ export default class Room {
                 child.children.forEach((groupchild)=> {
                     groupchild.castShadow = true;
                     groupchild.receiveShadow = true;
-                }) 
+                }); 
+            }
+
+            if (child.name === "Screen") {
+                child.material = new THREE.MeshBasicMaterial({
+                    map: this.resources.items.screen,
+                });
             }
         });
         
@@ -32,7 +38,7 @@ export default class Room {
         this.actualRoom.scale.set(0.09,0.09,0.09);
         this.actualRoom.rotation.y = Math.PI;
     }
-
+    
     resize() {
         
     }

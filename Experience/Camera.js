@@ -23,26 +23,33 @@ export default class Camera{
              this.sizes.aspect,
              0.1,
              1000);
-        this.scene.add(this.perspectiveCam)
-        this.perspectiveCam.position.z = 5;
+        this.scene.add(this.perspectiveCam);
+
+        this.perspectiveCam.position.x = -3.5;
+        this.perspectiveCam.position.y = 1.7;
+        this.perspectiveCam.position.z = 3;
     }
 
     // createPerspectiveCam() : creates new ortho camera
     createOrthoCam() {
-        this.frustrum = 5;
         this.orthoCam = new THREE.OrthographicCamera(
             (-this.sizes.aspect * this.sizes.frustrum)/2,
             (this.sizes.aspect * this.sizes.frustrum)/2,
             this.sizes.frustrum / 2,
             -this.sizes.frustrum / 2,
-            -100,
-            100
+            -10,
+            10
         );
         this.scene.add(this.orthoCam);
         
-        const size = 10;
-        const divisions = 10;
+        // ortho helper
+        this.orthoHelper = new THREE.CameraHelper(this.orthoCam); 
+        this.scene.add(this.orthoHelper);
 
+        const size = 20;
+        const divisions = 20;
+
+        // grid & axes helpers 
         const gridHelper = new THREE.GridHelper(size, divisions);
         this.scene.add(gridHelper);
 
@@ -71,5 +78,10 @@ export default class Camera{
 
     update() {
         this.controls.update();
+        
+        this.orthoHelper.matrixWorldNeedsUpdate = true;
+        this.orthoHelper.update();
+        this.orthoHelper.position.copy(this.orthoCam.position);
+        this.orthoHelper.rotation.copy(this.orthoCam.rotation);
     }
 }

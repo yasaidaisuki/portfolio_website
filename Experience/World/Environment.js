@@ -14,7 +14,7 @@ export default class Environment {
     setSunlight() {
 
         // sun light aka. directional light
-        this.sunLight = new THREE.DirectionalLight("#ffffff", 0.7);
+        this.sunLight = new THREE.DirectionalLight("#ffffff", 0.4);
         this.sunLight.castShadow = true;
         this.sunLight.shadow.camera.far = 20;
         // resolution
