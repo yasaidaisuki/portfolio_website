@@ -19,8 +19,6 @@ export default class Time extends EventEmitter {
         this.current = currentTime;
         // elapsed time
         this.elasped = this.current - this.start;
-
-        console.log(this.delta);
         this.emit("update");
         window.requestAnimationFrame(() => this.update());
     }

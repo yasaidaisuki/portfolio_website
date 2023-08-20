@@ -7,6 +7,7 @@ export default class Room {
         this.experience = new Experience();
         this.scene = this.experience.scene; 
         this.resources = this.experience.resources;
+        this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.actualRoom = this.room.scene;
         
@@ -39,6 +40,8 @@ export default class Room {
         this.actualRoom.rotation.y = Math.PI;
     }
     
+
+
     resize() {
         
     }

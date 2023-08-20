@@ -34,6 +34,7 @@ export default class World {
         this.room.update();
        }
        if (this.controls) {
+        console.log("init");
         this.controls.update();
        }
        
