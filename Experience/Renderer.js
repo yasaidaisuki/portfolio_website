@@ -38,6 +38,27 @@ export default class Renderer{
     }
 
     update() {
+        this.renderer.setViewport(0, 0, this.sizes.width, this.sizes.height);
         this.renderer.render(this.scene, this.camera.perspectiveCam);
+       
+        // second screen 
+        this.renderer.setScissorTest(true);
+        this.renderer.setViewport(
+            this.sizes.width - this.sizes.width / 3,
+            this.sizes.height - this.sizes.height / 3,
+            this.sizes.width / 3,
+            this.sizes.height / 3 
+        );
+
+        this.renderer.setScissor(
+            this.sizes.width - this.sizes.width / 3,
+            this.sizes.height - this.sizes.height / 3,
+            this.sizes.width / 3,
+            this.sizes.height / 3 
+        );
+
+        this.renderer.render(this.scene, this.camera.orthoCam);
+
+        this.renderer.setScissorTest(false);
     }
 }
