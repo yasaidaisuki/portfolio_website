@@ -29,12 +29,11 @@ export default class World {
     }
 
     update() {
-
        if (this.room) {
+        console.log("init");
         this.room.update();
        }
        if (this.controls) {
-        console.log("init");
         this.controls.update();
        }
        

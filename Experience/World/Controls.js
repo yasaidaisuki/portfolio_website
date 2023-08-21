@@ -6,7 +6,6 @@ export default class Controls {
         // setting objects
         this.experience = new Experience();
         this.scene = this.experience.scene; 
-        this.sizes = this.experience.sizes;
         this.resources = this.experience.resources;
         this.time = this.experience.time;
         this.camera = this.experience.camera;
@@ -44,7 +43,7 @@ export default class Controls {
 
     update() {
         this.curve.getPointAt(this.progress, this.dummyCurve);
-        this.progress += 0.1;
+        this.progress += 0.001;
         console.log(this.progress);
         this.camera.orthoCam.position.copy(this.dummyCurve); 
     }
