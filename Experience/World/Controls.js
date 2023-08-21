@@ -39,13 +39,18 @@ export default class Controls {
          {
             // if scrolling up 
             if (e.deltaY > 0) {
-                this.lerp.target += 0.02;
+                this.lerp.target += 0.01;
             }
             // scrolling down
             else {
-                this.lerp.target -= 0.02;
+                if (this.lerp.target < 0) {
+                    this.lerp.target = 1;
+                }
+                else {
+                this.lerp.target -= 0.01;
+                }
             }
-         })
+         });
     }
 
     setPath() {
@@ -80,7 +85,6 @@ export default class Controls {
         // copies position lerp.current and puts it into position
         this.curve.getPointAt(this.lerp.current % 1, this.position);
         this.camera.orthoCam.position.copy(this.position);
-        
         // v1 - v2
         this.directionalVector.subVectors(
             this.curve.getPointAt((this.lerp.current % 1) + 0.0000001),
@@ -95,5 +99,6 @@ export default class Controls {
         );
         this.crossVector.multiplyScalar(1000000);
         this.camera.orthoCam.lookAt(this.crossVector);
+        console
     }
 }
