@@ -39,8 +39,12 @@ export default class Room {
         this.actualRoom.scale.set(0.09,0.09,0.09);
         this.actualRoom.rotation.y = Math.PI;
     }
-    
 
+    onMouse() {
+        window.addEventListener("mousemove", (e) => {
+            console.log(e);
+        });
+    }
 
     resize() {
         

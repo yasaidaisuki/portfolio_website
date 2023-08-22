@@ -43,12 +43,7 @@ export default class Controls {
             }
             // scrolling down
             else {
-                if (this.lerp.target < 0) {
-                    this.lerp.target = 1;
-                }
-                else {
                 this.lerp.target -= 0.01;
-                }
             }
          });
     }
