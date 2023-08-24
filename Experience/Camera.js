@@ -38,8 +38,8 @@ export default class Camera{
             (this.sizes.aspect * this.sizes.frustrum) / 2,
             this.sizes.frustrum / 2,
             -this.sizes.frustrum / 2,
-            -10,
-            10
+            -50,
+            50
         );
         console.log(this.orthoCam);
 
@@ -50,16 +50,13 @@ export default class Camera{
         this.scene.add(this.orthoCam);
         
         // ortho helper
-        this.orthoHelper = new THREE.CameraHelper(this.orthoCam); 
-        this.scene.add(this.orthoHelper);
+        // this.orthoHelper = new THREE.CameraHelper(this.orthoCam); 
+        // this.scene.add(this.orthoHelper);
 
         const size = 20;
         const divisions = 20;
 
         // grid & axes helpers 
-        const gridHelper = new THREE.GridHelper(size, divisions);
-        this.scene.add(gridHelper);
-
         const axesHelper = new THREE.AxesHelper(10);
         this.scene.add(axesHelper);
     }
@@ -86,9 +83,9 @@ export default class Camera{
     update() {
         this.controls.update();
         
-        this.orthoHelper.matrixWorldNeedsUpdate = true;
-        this.orthoHelper.update();
-        this.orthoHelper.position.copy(this.orthoCam.position);
-        this.orthoHelper.rotation.copy(this.orthoCam.rotation);
+        // this.orthoHelper.matrixWorldNeedsUpdate = true;
+        // this.orthoHelper.update();
+        // this.orthoHelper.position.copy(this.orthoCam.position);
+        // this.orthoHelper.rotation.copy(this.orthoCam.rotation);
     }
 }

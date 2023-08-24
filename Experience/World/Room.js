@@ -53,7 +53,8 @@ export default class Room {
         window.addEventListener("mousemove", (e) => {
             // calculating mouse location
             this.rotation = ((e.clientX - window.innerWidth/2) * 2) / window.innerWidth;
-            this.lerp.target = this.rotation;
+            // adding lerp rotation
+            this.lerp.target = this.rotation*0.1;
         });
     }
 
@@ -68,6 +69,7 @@ export default class Room {
             this.lerp.ease
         );
 
-        //this.actualRoom.rotation.y = this.lerp.current;
+        // updating rotation
+        this.actualRoom.rotation.y = this.lerp.current;
     }
 }
