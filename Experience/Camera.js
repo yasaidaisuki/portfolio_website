@@ -32,14 +32,20 @@ export default class Camera{
 
     // createPerspectiveCam() : creates new ortho camera
     createOrthoCam() {
+
         this.orthoCam = new THREE.OrthographicCamera(
-            (-this.sizes.aspect * this.sizes.frustrum)/2,
-            (this.sizes.aspect * this.sizes.frustrum)/2,
+            (-this.sizes.aspect * this.sizes.frustrum) / 2,
+            (this.sizes.aspect * this.sizes.frustrum) / 2,
             this.sizes.frustrum / 2,
             -this.sizes.frustrum / 2,
-            -10,
-            10
+            -50,
+            50
         );
+
+        this.orthoCam.position.y = 2;
+        this.orthoCam.position.z = 2;
+        this.orthoCam.rotation.x = -Math.PI/6;
+
         this.scene.add(this.orthoCam);
         
         // ortho helper

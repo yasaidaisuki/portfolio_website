@@ -39,7 +39,7 @@ export default class Renderer{
 
     update() {
         this.renderer.setViewport(0, 0, this.sizes.width, this.sizes.height);
-        this.renderer.render(this.scene, this.camera.perspectiveCam ); 
+        this.renderer.render(this.scene, this.camera.orthoCam ); 
        
         // second screen 
         this.renderer.setScissorTest(true);
@@ -57,7 +57,7 @@ export default class Renderer{
             this.sizes.height / 3 
         );
 
-        this.renderer.render(this.scene, this.camera.orthoCam);
+        this.renderer.render(this.scene, this.camera.perspectiveCam);
 
         this.renderer.setScissorTest(false);
     }

@@ -14,7 +14,7 @@ export default class Environment {
     setLight() {
 
         // sun light aka. directional light
-        this.sunLight = new THREE.DirectionalLight("#ffffff", 0.45);
+        this.sunLight = new THREE.DirectionalLight("#ffffff", 0.5);
         this.sunLight.castShadow = true;
         this.sunLight.shadow.camera.far = 20;
         // resolution
@@ -29,12 +29,12 @@ export default class Environment {
         this.scene.add(this.lightHelper);
 
         // ambient light
-        this.ambientLight = new THREE.AmbientLight("#E9DBD5", 0.7);
+        this.ambientLight = new THREE.AmbientLight("#E9DBD5", 1);
         this.scene.add(this.ambientLight);
 
         // window light
 
-        this.intensity = 5;
+        this.intensity = 7;
         this.distance = 3.0;
         this.angle = Math.PI / 7;
         this.penumbra = 0.9;
