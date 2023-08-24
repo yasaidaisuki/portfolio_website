@@ -46,7 +46,6 @@ export default class Room {
         
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.09,0.09,0.09);
-        this.actualRoom.rotation.y = Math.PI;
     }
 
     onMouseMove() {
@@ -68,6 +67,6 @@ export default class Room {
             this.lerp.ease
         );
 
-         this.actualRoom.rotation.y = this.lerp.current;
+        this.actualRoom.rotation.y = this.lerp.current;
     }
 }

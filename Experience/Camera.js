@@ -38,12 +38,13 @@ export default class Camera{
             (this.sizes.aspect * this.sizes.frustrum) / 2,
             this.sizes.frustrum / 2,
             -this.sizes.frustrum / 2,
-            -50,
-            50
+            -10,
+            10
         );
+        console.log(this.orthoCam);
 
-        this.orthoCam.position.y = 2;
-        this.orthoCam.position.z = 2;
+        this.orthoCam.position.y = 2.5;
+        this.orthoCam.position.z = 4;
         this.orthoCam.rotation.x = -Math.PI/6;
 
         this.scene.add(this.orthoCam);

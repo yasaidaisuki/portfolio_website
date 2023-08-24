@@ -21,7 +21,7 @@ export default class Environment {
         this.sunLight.shadow.mapSize.set(2048,2048);
         this.sunLight.shadow.normalBias = 0.01;
         // x y z 
-        this.sunLight.position.set(-9,7,3);
+        this.sunLight.position.set(4,7,-1);
         this.scene.add(this.sunLight);
 
         // light helper
@@ -34,14 +34,14 @@ export default class Environment {
 
         // window light
 
-        this.intensity = 7;
+        this.intensity = 10;
         this.distance = 3.0;
         this.angle = Math.PI / 7;
         this.penumbra = 0.9;
         this.decay = 1.0;
         
         this.windowLight = new THREE.SpotLight( 0xF6DAD0, this.intensity, this.distance, this.angle, this.penumbra, this.decay );
-        this.windowLight.position.set( 1, 1.2, 0.9 );
+        this.windowLight.position.set( -1.3, 1.4, -1.3 );
 
         this.windowLight.castShadow = true;
 

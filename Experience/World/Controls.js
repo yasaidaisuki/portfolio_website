@@ -12,18 +12,11 @@ export default class Controls {
         this.camera = this.experience.camera;
         this.room = this.experience.world.room.actualRoom;
 
-        this.position = new THREE.Vector3(1,0.5,0);
-
     }
 
-
-
     resize() {
-        
     }
 
     update() {
-        this.camera.orthoCam.position.copy(this.position);
-        this.camera.orthoCam.lookAt(0, 0, 0);
     }
 }
