@@ -43,8 +43,8 @@ export default class Camera{
         );
         console.log(this.orthoCam);
 
-        this.orthoCam.position.y = 2.5;
-        this.orthoCam.position.z = 4;
+        this.orthoCam.position.y = 4;
+        this.orthoCam.position.z = 5;
         this.orthoCam.rotation.x = -Math.PI/6;
 
         this.scene.add(this.orthoCam);

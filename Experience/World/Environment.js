@@ -14,14 +14,14 @@ export default class Environment {
     setLight() {
 
         // sun light aka. directional light
-        this.sunLight = new THREE.DirectionalLight("#ffffff", 0.5);
+        this.sunLight = new THREE.DirectionalLight("#ffffff", 0.75);
         this.sunLight.castShadow = true;
         this.sunLight.shadow.camera.far = 20;
         // resolution
         this.sunLight.shadow.mapSize.set(2048,2048);
         this.sunLight.shadow.normalBias = 0.01;
         // x y z 
-        this.sunLight.position.set(4,7,-1);
+        this.sunLight.position.set(1,6,4);
         this.scene.add(this.sunLight);
 
         // light helper
@@ -29,27 +29,40 @@ export default class Environment {
         this.scene.add(this.lightHelper);
 
         // ambient light
-        this.ambientLight = new THREE.AmbientLight("#E9DBD5", 1);
+        this.ambientLight = new THREE.AmbientLight("#E9DBD5", 1.2);
         this.scene.add(this.ambientLight);
 
         // window light
 
         this.intensity = 10;
-        this.distance = 3.0;
+        this.distance = 2.5;
         this.angle = Math.PI / 7;
         this.penumbra = 0.9;
-        this.decay = 1.0;
+        this.decay = 2.0;
         
         this.windowLight = new THREE.SpotLight( 0xF6DAD0, this.intensity, this.distance, this.angle, this.penumbra, this.decay );
-        this.windowLight.position.set( -1.3, 1.4, -1.3 );
+        this.windowLight.position.set( 1.2, 1.3, -0.7 );
+
+        // window light target
+        this.target = new THREE.Object3D();
+        this.target.position.set(0.5,0,0);
+        this.scene.add(this.target);
+
+
+        this.windowLight.target = this.target;
+
+        this.windowLight.target
 
         this.windowLight.castShadow = true;
 
         this.windowLight.shadow.mapSize.set(2048,2048);
-        this.windowLight.shadow.bias = 0.00001;
+        // shadow acne problem
+        this.windowLight.shadow.normalBias = 0.001;
 
         this.scene.add( this.windowLight );
-  
+        this.scene.add( this.windowLight.target );
+
+
 
         // window light helper
         this.windowLightHelper = new THREE.SpotLightHelper( this.windowLight );
