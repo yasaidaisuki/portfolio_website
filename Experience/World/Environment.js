@@ -29,7 +29,7 @@ export default class Environment {
         // this.scene.add(this.lightHelper);
 
         // ambient light
-        this.ambientLight = new THREE.AmbientLight("#E9DBD5", 1);
+        this.ambientLight = new THREE.AmbientLight("#E9DBD5", 0.9);
         this.scene.add(this.ambientLight);
 
         // window light
