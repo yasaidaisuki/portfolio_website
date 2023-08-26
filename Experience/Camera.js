@@ -41,24 +41,16 @@ export default class Camera{
             -50,
             50
         );
-        console.log(this.orthoCam);
 
         this.orthoCam.position.y = 4;
-        this.orthoCam.position.z = 5;
+        this.orthoCam.position.z = 5.5;
         this.orthoCam.rotation.x = -Math.PI/6;
 
         this.scene.add(this.orthoCam);
         
         // ortho helper
-        // this.orthoHelper = new THREE.CameraHelper(this.orthoCam); 
-        // this.scene.add(this.orthoHelper);
-
-        const size = 20;
-        const divisions = 20;
-
-        // grid & axes helpers 
-        const axesHelper = new THREE.AxesHelper(10);
-        this.scene.add(axesHelper);
+    //     this.orthoHelper = new THREE.CameraHelper(this.orthoCam); 
+    //     this.scene.add(this.orthoHelper);
     }
 
     setOrbitControls() {
