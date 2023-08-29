@@ -139,6 +139,20 @@ html, body {
   font-size: 25px;
 }
 
+.section-detail-wrapper{
+  margin: 50px 80px;
+}
+
+.section-heading{
+  margin-top: 80px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.section-text{
+  margin-top: 10px;
+  font-size: 17px;
+}
 
 /* Hero ------------------------------------------------------- */
 .hero{
@@ -151,5 +165,5 @@ html, body {
   height: 100%;
   width: calc(100% - 160px);
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1300px;
 }

@@ -11,7 +11,6 @@ export default class Room {
         this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.actualRoom = this.room.scene;
-
         // smoothing the motion of the curve
         this.lerp = {
             current: 0,
@@ -42,8 +41,34 @@ export default class Room {
                     map: this.resources.items.screen,
                 });
             }
+            if (child.name === "lamp1") {
+                child.material = new THREE.MeshStandardMaterial({
+                    emissive: 0x36454F,
+                    emissiveIntensity: 0,
+                });  
+            }
+            if (child.name === "lamp2") {
+                child.material = new THREE.MeshStandardMaterial({
+                    emissive: 0x36454F,
+                    emissiveIntensity: 0,
+                });  
+            }
         });
         
+        // lamp lights
+        this.intensity = 0;
+        const dist = 1;
+        const decay = 1;
+        this.lampLight1 = new THREE.PointLight(0xffffff, this.intensity, dist , decay );
+        this.lampLight1.position.set(10.278803825378418, 8.356810569763184 , 5.399413108825684);
+        this.lampLight1.rotation.x = -Math.PI/2;
+        this.actualRoom.add(this.lampLight1);
+
+        this.lampLight2 = new THREE.PointLight(0xffffff, this.intensity, decay);
+        this.lampLight2.position.set(-2.903419017791748, 5.227436256408691 , -0.7773137092590332);
+        this.lampLight2.rotation.x = -Math.PI/2;
+        this.actualRoom.add(this.lampLight2);
+
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.11,0.11,0.11);
         //this.actualRoom.rotation.y = -Math.PI/2;

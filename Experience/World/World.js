@@ -38,6 +38,44 @@ export default class World {
         if (this.environment) { 
             this.environment.switchTheme(theme);
         }
+        if (this.theme.theme === "light") {
+            this.room.lampLight1.intensity = 0;
+            this.room.lampLight2.intensity = 0;
+            // setting emission
+            this.room.actualRoom.children.forEach((child) => {
+                if (child.name === "lamp1") {
+                    child.material = new THREE.MeshStandardMaterial({
+                        emissive: 0x36454F,
+                        emissiveIntensity: 0,
+
+                    });    
+                }
+                if (child.name === "lamp2") {
+                    child.material = new THREE.MeshStandardMaterial({
+                        emissive: 0x36454F,
+                        emissiveIntensity: 0,
+                    });    
+                }
+            });
+        }
+        else {
+            this.room.lampLight1.intensity = 0.4;
+            this.room.lampLight2.intensity = 0.4;
+            // setting emission
+            this.room.actualRoom.children.forEach((child) => {
+                if (child.name === "lamp1") {
+                    child.material = new THREE.MeshStandardMaterial({
+                        emissive: 0xffffff,
+                        
+                    });    
+                }
+                if (child.name === "lamp2") {
+                    child.material = new THREE.MeshStandardMaterial({
+                        emissive: 0xffffff,
+                    });    
+                }
+            });
+        }
     }
     
     resize() {}
