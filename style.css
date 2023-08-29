@@ -11,11 +11,43 @@ html, body {
   color: var(--text-black);
 }
 
+h1,
+section,
+p,
+svg{
+  transition: background-color 0.5s, color 0.5s;
+}
+
+
 :root{
   --text-black: #333633;
   --primary-color: #faf6e7;
   --primary-pink: #e5a1aa;
+  /* Light theme var */
+  --color-text-light: #333332;
+  --color-background-light: #FAF4E5;
+  --color-pink-light: #e5a1aa;
+  --color-green-light: #7AD0AC;
+  --color-blue-light: #8395CD;
+  /* Dark theme var */
+  --color-text-dark: #FAF4E5;
+  --color-background-dark: #8395CD;
+}
 
+.light-theme{
+  --color-text: var(--color-text-light);
+  --color-background: var(--color-background-light);
+  --color-pink: var(--color-pink-light);
+  --color-green: var(--color-green-light);
+  --color-blue: var(--color-blue-light);
+}
+
+.dark-theme{
+  --color-text: var(--color-text-dark);
+  --color-background: var(--color-background-dark);
+  --color-pink: var(--color-text-dark);
+  --color-green: var(--color-text-dark);
+  --color-blue: var(--color-text-dark);
 }
 
 /* Experience ------------------------------------------------------- */
@@ -61,6 +93,7 @@ html, body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: var(--color-text);
 }
 
 .toggle-button{
@@ -71,7 +104,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-pink);
+  background-color: var(--color-pink);
   border-radius: 999px;
   margin: 0px 16px;
   border: none;
@@ -84,7 +117,7 @@ html, body {
   border-radius: 50%;
   width: 20px;
   height: 20px;
-  background-color: var(--primary-color);
+  background-color: var(--color-background);
   transition: all 0.2s ease-in-out;
 }
 
@@ -106,7 +139,7 @@ html, body {
   width: 50%;
   padding: 500px 2%;
   margin: 0;
-  background-color: var(--primary-color);
+  background-color: var(--color-background);
 }
 
 .left{
@@ -120,7 +153,7 @@ html, body {
 .section-intro-wrapper{
   position: relative;
   padding: 20% 5%;
-  border-bottom: 2px solid var(--primary-pink);
+  border-bottom: 2px solid var(--color-pink);
   padding-bottom: 400px;
 }
 
@@ -128,14 +161,15 @@ html, body {
   font-size: 40px;
   font-weight: 500;
   transform-origin: left;
-  border-bottom: 2px solid var(--primary-pink);
+  border-bottom: 2px solid var(--color-pink);
+  color:var(--color-pink);
 }
 
 .section-number{
   position: absolute;
   bottom: 15px;
   right: 0;
-  color: var(--primary-pink);
+  color: var(--color-pink);
   font-size: 25px;
 }
 
@@ -147,11 +181,13 @@ html, body {
   margin-top: 80px;
   font-size: 20px;
   font-weight: bold;
+  color: var(--color-text);
 }
 
 .section-text{
   margin-top: 10px;
   font-size: 17px;
+  color: var(--color-text);
 }
 
 /* Hero ------------------------------------------------------- */
@@ -166,4 +202,5 @@ html, body {
   width: calc(100% - 160px);
   margin: 0 auto;
   max-width: 1300px;
+  color: var(--color-text);
 }
