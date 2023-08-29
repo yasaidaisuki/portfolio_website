@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
+import GSAP from "gsap";
 
 export default class Environment {
     constructor() {
@@ -48,13 +49,9 @@ export default class Environment {
         this.target.position.set(0.5,0,0);
         this.scene.add(this.target);
 
-
         this.windowLight.target = this.target;
-
         this.windowLight.target
-
         this.windowLight.castShadow = true;
-
         this.windowLight.shadow.mapSize.set(2048,2048);
         // shadow acne problem
         this.windowLight.shadow.normalBias = 0.001;
@@ -68,6 +65,18 @@ export default class Environment {
         // this.windowLightHelper = new THREE.SpotLightHelper( this.windowLight );
         // this.scene.add(this.windowLightHelper);
 
+    }
+
+    switchTheme(theme) { 
+        if(theme === "dark") {
+            GSAP.to(this.sunLight.color,{
+                r: 255,
+                g: 255,
+                a: 255,
+            })
+        } else {
+
+        }
     }
 
     resize() {
