@@ -18,7 +18,7 @@ export default class Room {
             target: 0,
             ease: 0.1,
         };
-        
+
         this.setModel();
         this.onMouseMove();
     }
@@ -48,7 +48,7 @@ export default class Room {
         this.actualRoom.scale.set(0.11,0.11,0.11);
         //this.actualRoom.rotation.y = -Math.PI/2;
     }
-
+    
     onMouseMove() {
         window.addEventListener("mousemove", (e) => {
             // calculating mouse location
@@ -71,5 +71,7 @@ export default class Room {
 
         // updating rotation
         this.actualRoom.rotation.y = this.lerp.current;
+
+        
     }
 }

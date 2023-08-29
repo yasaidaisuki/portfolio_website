@@ -20,6 +20,10 @@ export default class World {
         this.resources.on("ready", ()=> {
             this.environment = new Environment();
             this.room = new Room();
+            
+            // setting current position
+            this.currentPosX = this.room.actualRoom.position.x;
+
             this.floor = new Floor();
             this.controls = new Controls();
         });
@@ -33,10 +37,20 @@ export default class World {
     update() {
        if (this.room) {
         this.room.update();
+
+        // updating spotlight
+        this.targetPosX = this.room.actualRoom.position.x;
+        this.deltaX = this.targetPosX - this.currentPosX;
+        this.currentPosX = this.targetPosX;
+
+        // window light
+        this.environment.windowLight.position.x = this.environment.windowLight.position.x + this.deltaX;
+        // target 
+        this.environment.target.position.x = this.environment.target.position.x + this.deltaX;
+
        }
        if (this.controls) {
         this.controls.update();
        }
-       
     }
 }

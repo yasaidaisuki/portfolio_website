@@ -51,7 +51,7 @@ html, body {
 
 .section{
   width: 50%;
-  padding: 1000px 4%;
+  padding: 500px 2%;
   margin: 0;
   background-color: var(--primary-color);
 }
@@ -75,7 +75,17 @@ html, body {
   font-size: 40px;
   font-weight: 500;
   transform-origin: left;
+  border-bottom: 2px solid var(--primary-pink);
 }
+
+.section-number{
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  color: var(--primary-pink);
+  font-size: 25px;
+}
+
 
 /* Hero ------------------------------------------------------- */
 .hero{
