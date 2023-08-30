@@ -50,14 +50,14 @@ export default class World {
             // setting emission
             this.room.actualRoom.children.forEach((child) => {
                 if (child.name === "lamp1") {
-                    child.material = new THREE.MeshStandardMaterial({
+                    child.children[0].material = new THREE.MeshStandardMaterial({
                         color: 0xdce4e1,
                         emissive: 0x000000,
                         emissiveIntensity: 0.5,
                     });    
                 }
                 if (child.name === "lamp2") {
-                    child.material = new THREE.MeshStandardMaterial({
+                    child.children[0].material = new THREE.MeshStandardMaterial({
                         color: 0xdce4e1,
                         emissive: 0x000000,
                         emissiveIntensity: 0.5,
@@ -75,13 +75,13 @@ export default class World {
             // setting emission
             this.room.actualRoom.children.forEach((child) => {
                 if (child.name === "lamp1") {
-                    child.material = new THREE.MeshStandardMaterial({
+                    child.children[0].material = new THREE.MeshStandardMaterial({
                         emissive: 0xffffff,
                         emissiveIntensity: 0.5,
                     });    
                 }
                 if (child.name === "lamp2") {
-                    child.material = new THREE.MeshStandardMaterial({
+                    child.children[0].material = new THREE.MeshStandardMaterial({
                         emissive: 0xffffff,
                         emissiveIntensity: 0.5,
                     });    
