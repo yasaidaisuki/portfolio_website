@@ -67,10 +67,10 @@ export default class World {
         }
         else {
             GSAP.to(this.room.lampLight1, {
-                intensity: 0.6,
+                intensity: 0.5,
             })
             GSAP.to(this.room.lampLight2, {
-                intensity: 0.6,
+                intensity: 0.4,
             })
             // setting emission
             this.room.actualRoom.children.forEach((child) => {
@@ -83,7 +83,7 @@ export default class World {
                 if (child.name === "lamp2") {
                     child.children[0].material = new THREE.MeshStandardMaterial({
                         emissive: 0xffffff,
-                        emissiveIntensity: 0.5,
+                        emissiveIntensity: 0.35,
                     });    
                 }
             });

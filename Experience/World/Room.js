@@ -15,7 +15,7 @@ export default class Room {
         this.lerp = {
             current: 0,
             target: 0,
-            ease: 0.1,
+            ease: 0.05,
         };
 
         this.setModel();
@@ -83,7 +83,7 @@ export default class Room {
             // calculating mouse location
             this.rotation = ((e.clientX - window.innerWidth/2) * 2) / window.innerWidth;
             // adding lerp rotation
-            this.lerp.target = this.rotation*0.1;
+            this.lerp.target = this.rotation*0.07;
         });
     }
 
