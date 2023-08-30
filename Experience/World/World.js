@@ -6,6 +6,8 @@ import Controls from "./Controls.js"
 import Environment from "./Environment.js"
 import Floor from "./Floor.js";
 
+import GSAP from "gsap";
+
 
 export default class World {
     constructor() {
@@ -39,28 +41,37 @@ export default class World {
             this.environment.switchTheme(theme);
         }
         if (this.theme.theme === "light") {
-            this.room.lampLight1.intensity = 0;
-            this.room.lampLight2.intensity = 0;
+            GSAP.to(this.room.lampLight1, {
+                intensity: 0,
+            })
+            GSAP.to(this.room.lampLight2, {
+                intensity: 0,
+            })
             // setting emission
             this.room.actualRoom.children.forEach((child) => {
                 if (child.name === "lamp1") {
                     child.material = new THREE.MeshStandardMaterial({
-                        emissive: 0x36454F,
-                        emissiveIntensity: 0,
-
+                        color: 0xdce4e1,
+                        emissive: 0x000000,
+                        emissiveIntensity: 0.5,
                     });    
                 }
                 if (child.name === "lamp2") {
                     child.material = new THREE.MeshStandardMaterial({
-                        emissive: 0x36454F,
-                        emissiveIntensity: 0,
+                        color: 0xdce4e1,
+                        emissive: 0x000000,
+                        emissiveIntensity: 0.5,
                     });    
                 }
             });
         }
         else {
-            this.room.lampLight1.intensity = 0.4;
-            this.room.lampLight2.intensity = 0.4;
+            GSAP.to(this.room.lampLight1, {
+                intensity: 0.6,
+            })
+            GSAP.to(this.room.lampLight2, {
+                intensity: 0.6,
+            })
             // setting emission
             this.room.actualRoom.children.forEach((child) => {
                 if (child.name === "lamp1") {

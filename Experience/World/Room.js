@@ -43,15 +43,17 @@ export default class Room {
             }
             if (child.name === "lamp1") {
                 child.material = new THREE.MeshStandardMaterial({
-                    emissive: 0x36454F,
-                    emissiveIntensity: 0,
-                });  
+                    color: 0xdce4e1,
+                    emissive: 0x000000,
+                    emissiveIntensity: 0.5,
+                });    
             }
             if (child.name === "lamp2") {
                 child.material = new THREE.MeshStandardMaterial({
-                    emissive: 0x36454F,
-                    emissiveIntensity: 0,
-                });  
+                    color: 0xdce4e1,
+                    emissive: 0x000000,
+                    emissiveIntensity: 0.5,
+                });    
             }
         });
         
