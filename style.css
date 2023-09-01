@@ -21,11 +21,11 @@ svg{
 
 :root{
   --text-black: #333633;
-  --primary-color: #faf6e7;
+  --primary-color: #faf6e7fb;
   --primary-pink: #e5a1aa;
   /* Light theme var */
   --color-text-light: #333332;
-  --color-background-light: #FAF4E5;
+  --color-background-light: #f7f0e1fb;
   --color-pink-light: #e5a1aa;
   --color-green-light: #7AD0AC;
   --color-blue-light: #8395CD;
