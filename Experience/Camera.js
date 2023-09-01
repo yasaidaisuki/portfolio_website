@@ -25,9 +25,9 @@ export default class Camera{
              1000);
         this.scene.add(this.perspectiveCam);
 
-        this.perspectiveCam.position.x = -3.5;
-        this.perspectiveCam.position.y = 1.7;
-        this.perspectiveCam.position.z = 3;
+        this.perspectiveCam.position.x = 29;
+        this.perspectiveCam.position.y = 14;
+        this.perspectiveCam.position.z = 12;
     }
 
     // createPerspectiveCam() : creates new ortho camera
@@ -48,9 +48,6 @@ export default class Camera{
 
         this.scene.add(this.orthoCam);
         
-        // ortho helper
-    //     this.orthoHelper = new THREE.CameraHelper(this.orthoCam); 
-    //     this.scene.add(this.orthoHelper);
     }
 
     setOrbitControls() {
@@ -71,8 +68,7 @@ export default class Camera{
         this.orthoCam.bottom = -this.sizes.frustrum / 2 ;
         this.orthoCam.updateProjectionMatrix();
     }
-
-    update() {
+update() {
         this.controls.update();
         
         // this.orthoHelper.matrixWorldNeedsUpdate = true;

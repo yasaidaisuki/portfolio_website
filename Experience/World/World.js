@@ -97,35 +97,6 @@ export default class World {
     update() {
        if (this.room) {
         this.room.update();
-
-        // updating spotlight
-        
-        // position x 
-        this.targetPosX = this.room.actualRoom.position.x;
-        this.deltaX = this.targetPosX - this.currentPosX;
-        this.currentPosX = this.targetPosX;
-
-        // position y
-        this.targetPosY = this.room.actualRoom.position.y;
-        this.deltaY = this.targetPosY - this.currentPosY;
-        this.currentPosY = this.targetPosY;
-
-        // position z
-        this.targetPosZ = this.room.actualRoom.position.z;
-        this.deltaZ = this.targetPosZ - this.currentPosZ;
-        this.currentPosZ = this.targetPosZ;
-        
-
-        // window light
-        this.environment.windowLight.position.x = this.environment.windowLight.position.x + this.deltaX;
-        this.environment.windowLight.position.y = this.environment.windowLight.position.y + this.deltaY;
-        this.environment.windowLight.position.z = this.environment.windowLight.position.z + this.deltaZ;
-        
-        // target 
-        this.environment.target.position.x = this.environment.target.position.x + this.deltaX;
-        this.environment.target.position.y = this.environment.target.position.y + this.deltaY;
-        this.environment.target.position.z = this.environment.target.position.z + this.deltaZ;
-
        }
        if (this.controls) {
         this.controls.update();

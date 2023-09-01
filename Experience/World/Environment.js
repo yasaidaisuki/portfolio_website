@@ -39,7 +39,7 @@ export default class Environment {
         this.distance = 2.7;
         this.angle = Math.PI / 5;
         this.penumbra = 0.9;
-        this.decay = 1.8;
+        this.decay = 2;
         
         this.windowLight = new THREE.SpotLight( 0xf5d3ad, this.intensity, this.distance, this.angle, this.penumbra, this.decay );
         this.windowLight.position.set( 1.3, 1.3, -0.7 );
@@ -60,8 +60,8 @@ export default class Environment {
         this.scene.add( this.windowLight.target );
 
         //window light helper
-        this.windowLightHelper = new THREE.SpotLightHelper( this.windowLight );
-        this.scene.add(this.windowLightHelper);
+        // this.windowLightHelper = new THREE.SpotLightHelper( this.windowLight );
+        // this.scene.add(this.windowLightHelper);
 
     }
 
@@ -130,6 +130,5 @@ export default class Environment {
     }
 
     update() {
-       
     }
 }

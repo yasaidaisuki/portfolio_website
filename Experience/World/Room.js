@@ -72,7 +72,7 @@ export default class Room {
         this.actualRoom.add(this.lampLight2);
 
         this.scene.add(this.actualRoom);
-        this.actualRoom.scale.set(0.11,0.11,0.11);
+        this.actualRoom.scale.set(0.1,0.1,0.1);
         //this.actualRoom.rotation.y = -Math.PI/2;
     }
     
@@ -81,7 +81,7 @@ export default class Room {
             // calculating mouse location
             this.rotation = ((e.clientX - window.innerWidth/2) * 2) / window.innerWidth;
             // adding lerp rotation
-            this.lerp.target = this.rotation*0.07;
+            this.lerp.target = this.rotation*0.05;
         });
     }
 
@@ -94,11 +94,11 @@ export default class Room {
             this.lerp.current, 
             this.lerp.target,
             this.lerp.ease
-        );
+        );    
 
         // updating rotation
         this.actualRoom.rotation.y = this.lerp.current;
 
-        
+       console.log(this.experience.world.environment.target.position);
     }
 }
