@@ -36,22 +36,20 @@ export default class Room {
                 }); 
             }
 
-            console.log(child);
-
             if (child.name === "Computer") {
                 child.children[1].material = new THREE.MeshBasicMaterial({
                     map: this.resources.items.screen,
                 });
             }
             if (child.name === "lamp1") {
-                child.children[0].material = new THREE.MeshStandardMaterial({
+                child.material = new THREE.MeshStandardMaterial({
                     color: 0xdce4e1,
                     emissive: 0x000000,
                     emissiveIntensity: 0.5,
                 });    
             }
-            if (child.name === "lamp2") {
-                child.children[0].material = new THREE.MeshStandardMaterial({
+            if (child.name === "lamp2_3") {
+                child.material = new THREE.MeshStandardMaterial({
                     color: 0xdce4e1,
                     emissive: 0x000000,
                     emissiveIntensity: 0.5,

@@ -60,8 +60,8 @@ export default class Environment {
         this.scene.add( this.windowLight.target );
 
         //window light helper
-        // this.windowLightHelper = new THREE.SpotLightHelper( this.windowLight );
-        // this.scene.add(this.windowLightHelper);
+        this.windowLightHelper = new THREE.SpotLightHelper( this.windowLight );
+        this.scene.add(this.windowLightHelper);
 
     }
 

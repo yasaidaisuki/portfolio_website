@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience.js";
-import GSAP from "gsap"
+import GSAP from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 
 export default class Controls {
@@ -16,24 +16,88 @@ export default class Controls {
 
         GSAP.registerPlugin(ScrollTrigger);
 
-        this.setPath();
+        this.setScrollTrigger();
     }
 
-    setPath(){
-        this.timeline = new GSAP.timeline();
-        this.timeline.to(this.room.position, { 
-            x: ()=> {
-                return this.sizes.width * 0.0012;
+    setScrollTrigger(){
+        ScrollTrigger.matchMedia({
+	
+            // Desktop
+            "(min-width: 960px)": () => {
+
+                // First section
+                this.firstMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".first-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                    }
+                });
+                this.firstMoveTimeline.to(this.room.position, {
+                    x: () => {
+                        return this.sizes.width * 0.0012;
+                    }
+                });
+
+                // Second section
+                this.secondMoveTimeline = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".second-move",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                    }
+                });
+
+                // changing room
+                this.secondMoveTimeline.to(this.room.position, {
+                    x: () => {
+                        return 1;
+                    },
+                    z: () => {
+                        return this.sizes.height * 0.001;
+                    },
+                    duration: 0.8,
+                    delay: 0.2,
+                }, "same");
+            
+                this.secondMoveTimeline.to(this.room.scale, {
+                    x: 0.4,
+                    y: 0.4,
+                    z: 0.4,
+                }, "same");
+                
+                // changing light
+                this.secondMoveTimeline.to(this.experience.world.environment.windowLight.position, {
+                    x: () => {
+                        return (this.experience.world.environment.windowLight.position.x * 3);
+                    },
+                    y: () => {
+                        return (this.experience.world.environment.windowLight.position.y * 3);
+                    },
+                    duration: 0.9,
+                }, "same");
+                
+                // lamp light
+                this.secondMoveTimeline.to(this.experience.world.room.lampLight2, {
+                    distance: 4,
+                }, "same");
+
             },
-            scrollTrigger:{
-                trigger: ".first-move",
-                markers: false,
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 0.6,
-                invalidateOnRefresh: true,
+            
+
+            // Mobile
+            "(max-width: 968px)": function() {
             },
-        });
+           
+            "all": function() {
+              
+            },
+              
+          }); 
     }
 
     resize() {
