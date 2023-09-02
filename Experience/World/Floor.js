@@ -16,7 +16,7 @@ export default class Floor {
             color: 0xF7F0E1,
         });
         this.plane = new THREE.Mesh(this.geometry, this.material);
-        this.scene.add(this.plane);
+        this.scene.add(this.plane); 
         this.plane.rotation.x = -Math.PI/2;
         this.plane.position.y = -0.3;
         this.plane.receiveShadow = true ;
