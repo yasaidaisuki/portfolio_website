@@ -16,6 +16,11 @@ export default class Controls {
         this.room = this.experience.world.room.actualRoom;
         this.environment = this.experience.world.environment;
 
+        this.circleFirst = this.experience.world.floor.circleFirst;
+        this.circleSecond = this.experience.world.floor.circleSecond;
+        this.circleThird = this.experience.world.floor.circleThird;
+        this.circleFourth = this.experience.world.floor.circleFourth;
+
         GSAP.registerPlugin(ScrollTrigger);
 
         this.setSmoothScroll();
@@ -598,7 +603,67 @@ export default class Controls {
 
                 });
 
-                
+                // Circle Animation
+
+                // First Circle
+
+                this.firstCircle = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".first-move",
+                        start: "top top",
+                        bottom: "bottom bottom",
+                        scrub: 0.6,
+                    },
+                }).to(this.circleFirst.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                });
+
+                // Second Circle
+
+                this.secondCircle = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".second-move",
+                        start: "top top",
+                        bottom: "bottom bottom",
+                        scrub: 0.6,
+                    },
+                }).to(this.circleSecond.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                });
+
+                // Third Circle
+
+                this.thirdCircle = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".third-move",
+                        start: "top top",
+                        bottom: "bottom bottom",
+                        scrub: 0.6,
+                    },
+                }).to(this.circleThird.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                });
+
+                // Fourth Circle
+
+                this.fourthCircle = new GSAP.timeline({
+                    scrollTrigger: {
+                        trigger: ".fourth-move",
+                        start: "top top",
+                        bottom: "bottom bottom",
+                        scrub: 0.6,
+                    },
+                }).to(this.circleFourth.scale, {
+                    x: 3,
+                    y: 3,
+                    z: 3,
+                });
                 
             }
               
