@@ -99,6 +99,5 @@ export default class Room {
         // updating rotation
         this.actualRoom.rotation.y = this.lerp.current;
 
-       console.log(this.experience.world.environment.target.position);
     }
 }
