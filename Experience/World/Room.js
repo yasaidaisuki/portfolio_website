@@ -11,6 +11,8 @@ export default class Room {
         this.time = this.experience.time;
         this.room = this.resources.items.room;
         this.actualRoom = this.room.scene;
+        this.roomChildren = {};
+
         // smoothing the motion of the curve
         this.lerp = {
             current: 0,
@@ -23,6 +25,11 @@ export default class Room {
     }
 
     setModel() {
+        // pre setting groups
+        this.actualRoom.children.forEach((child) => {
+
+        })
+
         // giving object lighting
         this.actualRoom.children.forEach((child) => {
             child.castShadow = true;
@@ -55,6 +62,17 @@ export default class Room {
                     emissiveIntensity: 0.5,
                 });    
             }
+
+            this.experience.world.environment.windowLight.visible = false;
+            //child.scale.set(0,0,0);
+
+            if (child.name === "Cube") { 
+                child.position.set(0, -1, -16);
+                child.scale.set(0,0,0); 
+            }
+
+            this.roomChildren[child.name.toLowerCase()] = child;
+
         });
         
         // lamp lights
@@ -70,6 +88,9 @@ export default class Room {
         this.lampLight2.position.set(-2.903419017791748, 5.227436256408691 , -0.7773137092590332);
         this.lampLight2.rotation.x = -Math.PI/2;
         this.actualRoom.add(this.lampLight2);
+
+        this.roomChildren["lampLight1"] = this.lampLight1;
+        this.roomChildren["lampLight2"] = this.lampLight2;
 
         this.scene.add(this.actualRoom);
         this.actualRoom.scale.set(0.1,0.1,0.1);

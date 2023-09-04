@@ -23,7 +23,7 @@ export default class Controls {
 
         GSAP.registerPlugin(ScrollTrigger);
 
-        this.setSmoothScroll();
+        //this.setSmoothScroll();
         this.setScrollTrigger();
     }
 
