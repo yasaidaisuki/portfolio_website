@@ -64,7 +64,7 @@ export default class Room {
             }
 
             this.experience.world.environment.windowLight.visible = false;
-            //child.scale.set(0,0,0);
+            child.scale.set(0,0,0);
 
             if (child.name === "Cube") { 
                 child.position.set(0, -1, -16);
