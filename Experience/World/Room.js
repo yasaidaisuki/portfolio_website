@@ -63,7 +63,6 @@ export default class Room {
                 });    
             }
 
-            this.experience.world.environment.windowLight.visible = false;
             child.scale.set(0,0,0);
 
             if (child.name === "Cube") { 

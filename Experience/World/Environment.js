@@ -35,7 +35,7 @@ export default class Environment {
 
         // window light
 
-        this.intensity = 7;
+        this.intensity = 0;
         this.distance = 2.7;
         this.angle = Math.PI / 5;
         this.penumbra = 0.9;
@@ -91,9 +91,6 @@ export default class Environment {
             GSAP.to(this.ambientLight, {
                 intensity: 0.78,
             });
-            GSAP.to(this.windowLight, {
-                intensity: 3,
-            });
         } else {
             // sunlight
             GSAP.to(this.sunLight.color, {
@@ -118,9 +115,6 @@ export default class Environment {
             });
             GSAP.to(this.ambientLight, {
                 intensity: 0.9,
-            });
-            GSAP.to(this.windowLight, {
-                intensity: 7,
             });
         }
     }

@@ -27,7 +27,6 @@ export default class Preloader extends EventEmitter {
     setAssets() {
         this.room = this.experience.world.room.actualRoom;
         this.roomChildren = this.experience.world.room.roomChildren;
-        console.log(this.roomChildren);
     }
 
     firstIntro() {
@@ -441,7 +440,12 @@ export default class Preloader extends EventEmitter {
                 y: -0.12181471288204193,
                 z: -0.8939098119735718,
                 duration: 0.4,
-            },"<") 
+                
+            },"<")
+            .to(this.world.environment.windowLight, {
+                intensity: 7,
+                onComplete: resolve
+            }) 
             
         });
     }
@@ -453,14 +457,36 @@ export default class Preloader extends EventEmitter {
         }
     }
 
+    onTouch(e) {
+        this.initialY = e.touches[0].clientY;
+        window.removeEventListener("touchstart", this.touchStart);
+    }
+
+    onTouchMove(e) {
+        let currentY = e.touches[0].clientY;
+        let delta = this.initialY - currentY;
+        if (delta > 0) {
+            window.removeEventListener("touchmove", this.touchMove);
+            this.playSecondIntro();
+            
+        }
+        this.initialY = null;
+    }
+
     async playIntro() {
         await this.firstIntro();
         this.scrollOnceEvent = this.onScroll.bind(this);
+        this.touchStart = this.onTouch.bind(this);
+        this.touchMove = this.onTouchMove.bind(this);
         window.addEventListener("wheel", this.scrollOnceEvent );
+        window.addEventListener("touchstart", this.touchStart);
+        window.addEventListener("touchmove", this.touchMove);
     }
 
     async playSecondIntro() {
         await this.secondIntro();
+        this.emit("finishanimation");
+        this.emit("enablecontrols");
     }
 
     resize() {
