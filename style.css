@@ -279,15 +279,17 @@ svg{
 }
 
 .section-heading{
-  margin-top: 80px;
-  font-size: 20px;
+  margin-top: 120px;
+  font-size: 22px;
   font-weight: bold;
   color: var(--color-text);
 }
 
 .section-text{
-  margin-top: 10px;
-  font-size: 17px;
+  word-spacing: 1px;
+  line-height: 1.7;
+  margin-top: 15px;
+  font-size: 18px;
   color: var(--color-text);
 }
 
