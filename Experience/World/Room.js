@@ -67,7 +67,6 @@ export default class Room {
 
             if (child.name === "Cube") { 
                 child.position.set(0, -1, 0);
-                //child.scale.set(0,0,0); 
             }
 
             this.roomChildren[child.name.toLowerCase()] = child;

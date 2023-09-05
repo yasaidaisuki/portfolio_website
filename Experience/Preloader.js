@@ -39,12 +39,11 @@ export default class Preloader extends EventEmitter {
     firstIntro() {
         return new Promise ((resolve)=> {
             this.timeline = new GSAP.timeline();
-
             this.timeline.to(".preloader", {
                 opacity: 0,
                 delay: 1,
                 onComplete: () => {
-                    document.querySelector(".preloader").classList.add(".hidden");
+                    document.querySelector(".preloader").classList.add("hidden");
                 }
             });
 
@@ -81,6 +80,9 @@ export default class Preloader extends EventEmitter {
                 onComplete: resolve,
             })
             .to(".arrow-svg-wrapper", {
+                opacity: 1,
+            }, "<")
+            .to(".toggle-bar", {
                 opacity: 1,
             }, "<")
         });
@@ -502,13 +504,12 @@ export default class Preloader extends EventEmitter {
                 duration: 0.4,
             },"<")
             .to(this.world.environment.windowLight, {
-                intensity: 7,
-                onComplete: resolve
+                intensity: 5,
             })
             .to(".arrow-svg-wrapper", {
                 opacity: 1,
+                onComplete: resolve
             }, "<") 
-            
         });
     }
 
@@ -547,10 +548,8 @@ export default class Preloader extends EventEmitter {
 
     async playSecondIntro() {
         await this.secondIntro();
+        this.world.readyLight = true;
         this.emit("enablecontrols");
     }
 
-    resize() {
-        
-    }
 }

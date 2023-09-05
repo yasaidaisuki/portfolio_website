@@ -22,6 +22,7 @@ export default class World extends EventEmitter {
         this.camera = this.experience.camera;
         this.resources = this.experience.resources;
         this.theme = this.experience.theme;
+        this.readyLight = false;
 
         this.resources.on("ready", ()=> {
             this.environment = new Environment();
@@ -33,6 +34,7 @@ export default class World extends EventEmitter {
         this.theme.on("switch", (theme) => {
             this.switchTheme(theme);
         });
+        
     }
 
     switchTheme(theme) {
@@ -65,29 +67,6 @@ export default class World extends EventEmitter {
                 }
             });
         }
-        else {
-            GSAP.to(this.room.lampLight1, {
-                intensity: 0.5,
-            })
-            GSAP.to(this.room.lampLight2, {
-                intensity: 0.4,
-            })
-            // setting emission
-            this.room.actualRoom.children.forEach((child) => {
-                if (child.name === "lamp1") {
-                    child.material = new THREE.MeshStandardMaterial({
-                        emissive: 0xffffff,
-                        emissiveIntensity: 0.6,
-                    });    
-                }
-                if (child.name === "lamp2_3") {
-                    child.material = new THREE.MeshStandardMaterial({
-                        emissive: 0xffffff,
-                        emissiveIntensity: 0.6,
-                    });    
-                }
-            });
-        }
     }
     
     resize() {}
@@ -98,6 +77,23 @@ export default class World extends EventEmitter {
        }
        if (this.controls) {
         this.controls.update();
+       }
+
+       if (this.theme.theme === "dark" && this.readyLight) {
+            GSAP.to(this.room.lampLight1, {
+                intensity: 0.5,
+            })
+            GSAP.to(this.room.lampLight2, {
+                intensity: 0.4,
+            })
+            this.room.roomChildren.lamp1.material = new THREE.MeshStandardMaterial({
+                emissive: 0xffffff,
+                emissiveIntensity: 0.6,
+            });
+            this.room.roomChildren.lamp2_3.material = new THREE.MeshStandardMaterial({
+                emissive: 0xffffff,
+                emissiveIntensity: 0.6,
+            });
        }
     }
 }
