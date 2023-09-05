@@ -55,7 +55,7 @@ export default class Preloader extends EventEmitter {
                     ease: "back.out(2.5)",
                     duration: 0.7,
                 }).to(this.room.position, {
-                    x: -0.8,
+                    x: -1.2,
                     ease: "power1.out",
                     duration: "0.7",
                 });
@@ -489,19 +489,19 @@ export default class Preloader extends EventEmitter {
                 yPercent: -100,
                 stagger: 0.07,
                 ease: "back.out(2)",
-                duration: 0.3,
+                duration: 0.2,
             },"<")
             .to(".first-sub .animatedis", {
                 yPercent: -100,
                 stagger: 0.07,
                 ease: "back.out(2)",
-                duration: 0.4,
+                duration: 0.3,
             },"<")
             .to(".second-sub .animatedis", {
                 yPercent: -100,
                 stagger: 0.07,
                 ease: "back.out(2)",
-                duration: 0.4,
+                duration: 0.3,
             },"<")
             .to(this.world.environment.windowLight, {
                 intensity: 5,
