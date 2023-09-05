@@ -17,7 +17,7 @@ export default class Room {
         this.lerp = {
             current: 0,
             target: 0,
-            ease: 0.05,
+            ease: 0.1,
         };
 
         this.setModel();
@@ -66,8 +66,8 @@ export default class Room {
             child.scale.set(0,0,0);
 
             if (child.name === "Cube") { 
-                child.position.set(0, -1, -16);
-                child.scale.set(0,0,0); 
+                child.position.set(0, -1, 0);
+                //child.scale.set(0,0,0); 
             }
 
             this.roomChildren[child.name.toLowerCase()] = child;

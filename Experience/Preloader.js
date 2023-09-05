@@ -1,6 +1,7 @@
 import { EventEmitter } from "events";
 import Experience from "./Experience";
 import GSAP from "gsap";
+import convert from "./Utils/covertDivsToSpans.js";
 
 export default class Preloader extends EventEmitter {
     constructor() {
@@ -25,6 +26,12 @@ export default class Preloader extends EventEmitter {
     }
 
     setAssets() {
+        convert(document.querySelector(".intro-text"));
+        convert(document.querySelector(".hero-main-title"));
+        convert(document.querySelector(".hero-main-description"));
+        convert(document.querySelector(".hero-second-subheading"));
+        convert(document.querySelector(".second-sub"));
+        
         this.room = this.experience.world.room.actualRoom;
         this.roomChildren = this.experience.world.room.roomChildren;
     }
@@ -32,6 +39,14 @@ export default class Preloader extends EventEmitter {
     firstIntro() {
         return new Promise ((resolve)=> {
             this.timeline = new GSAP.timeline();
+
+            this.timeline.to(".preloader", {
+                opacity: 0,
+                delay: 1,
+                onComplete: () => {
+                    document.querySelector(".preloader").classList.add(".hidden");
+                }
+            });
 
             if (this.device === "desktop") {
                 this.timeline.to(this.roomChildren.cube.scale, {
@@ -41,10 +56,9 @@ export default class Preloader extends EventEmitter {
                     ease: "back.out(2.5)",
                     duration: 0.7,
                 }).to(this.room.position, {
-                    x: -1,
+                    x: -0.8,
                     ease: "power1.out",
                     duration: "0.7",
-                    onComplete: resolve,
                 });
             }
             else { 
@@ -57,9 +71,18 @@ export default class Preloader extends EventEmitter {
                     z: -1,
                     ease: "power1.out",
                     duration: "0.7",
-                    onComplete: resolve,
                 });
             }
+            this.timeline.to(".intro-text .animatedis", {
+                yPercent: -100,
+                stagger: 0.07,
+                ease: "back.out(2)",
+                duration: 0.4,
+                onComplete: resolve,
+            })
+            .to(".arrow-svg-wrapper", {
+                opacity: 1,
+            }, "<")
         });
     }
 
@@ -67,7 +90,16 @@ export default class Preloader extends EventEmitter {
         return new Promise ((resolve)=> {
             this.secondTimeline = new GSAP.timeline();
 
-            this.secondTimeline.to(this.room.position, {
+            this.secondTimeline.to(".intro-text .animatedis", {
+                yPercent: 100,
+                stagger: 0.07,
+                ease: "back.in(1.3)",
+                duration: 0.4,
+            })
+            .to(".arrow-svg-wrapper", {
+                opacity: 0,
+            }, "<")
+            .to(this.room.position, {
                 x: 0,
                 y: 0,
                 z: 0,
@@ -77,7 +109,7 @@ export default class Preloader extends EventEmitter {
                 y: 2*Math.PI,
             }, "same")
             .to(this.roomChildren.cube.scale, {
-                x: 11.,
+                x: 11,
                 y: 11.23,
                 z: 11.22,
                 ease: "power1.out"
@@ -88,6 +120,9 @@ export default class Preloader extends EventEmitter {
                 z: 4.6,
                 ease: "back.out"
             }, "same")
+            .to(this.camera.orthoCam.position, {
+                y: 4,
+            },"same")
             .to(this.roomChildren.wall.scale, {
                 x: 10.665681838989258,
                 y: 9.59201431274414,
@@ -442,10 +477,37 @@ export default class Preloader extends EventEmitter {
                 duration: 0.4,
                 
             },"<")
+            .to(".hero-main-title .animatedis", {
+                yPercent: -100,
+                stagger: 0.07,
+                ease: "back.out(2)",
+                duration: 0.3,
+            },"<")
+            .to(".hero-main-description .animatedis", {
+                yPercent: -100,
+                stagger: 0.07,
+                ease: "back.out(2)",
+                duration: 0.3,
+            },"<")
+            .to(".first-sub .animatedis", {
+                yPercent: -100,
+                stagger: 0.07,
+                ease: "back.out(2)",
+                duration: 0.4,
+            },"<")
+            .to(".second-sub .animatedis", {
+                yPercent: -100,
+                stagger: 0.07,
+                ease: "back.out(2)",
+                duration: 0.4,
+            },"<")
             .to(this.world.environment.windowLight, {
                 intensity: 7,
                 onComplete: resolve
-            }) 
+            })
+            .to(".arrow-svg-wrapper", {
+                opacity: 1,
+            }, "<") 
             
         });
     }
@@ -485,7 +547,6 @@ export default class Preloader extends EventEmitter {
 
     async playSecondIntro() {
         await this.secondIntro();
-        this.emit("finishanimation");
         this.emit("enablecontrols");
     }
 

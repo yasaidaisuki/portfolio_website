@@ -42,7 +42,7 @@ export default class Camera{
             50
         );
 
-        this.orthoCam.position.y = 4;
+        this.orthoCam.position.y = 3.05;
         this.orthoCam.position.z = 5.5;
         this.orthoCam.rotation.x = -Math.PI/6;
 
