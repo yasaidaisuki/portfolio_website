@@ -148,7 +148,7 @@ svg{
   top: 50%;
   left: 50%;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 19px;
   transform: translate(-50%,-50%);
 }
 
@@ -291,6 +291,7 @@ svg{
   margin-top: 15px;
   font-size: 18px;
   color: var(--color-text);
+  text-align: justify;
 }
 
 /* Hero ------------------------------------------------------- */
