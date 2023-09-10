@@ -309,6 +309,12 @@ svg{
   color: var(--color-text);
 }
 
+.hero-main {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+}
+
 .hero-main-title{
   font-size: 40px;
   font-weight: bold;
@@ -316,6 +322,12 @@ svg{
 
 .hero-main-description{
   font-size: 20px;
+}
+
+.hero-second {
+  position: absolute;
+  bottom: 45%;
+  right: 10%;
 }
 
 .hero-second-subheading{
