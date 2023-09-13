@@ -5,4 +5,4 @@ Website Portfolio
 - original idea from bokoko33.me & andrew woann
 
 Live Website:
-https://portfolio-website-git-main-yasaidaisuki.vercel.app/
+https://yasaidaisuki.github.io/
