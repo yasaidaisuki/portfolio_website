@@ -311,8 +311,8 @@ svg{
 
 .hero-main {
   position: absolute;
-  bottom: 20%;
-  left: 5%;
+  top: 60%;
+  left: 10%;
 }
 
 .hero-main-title{
@@ -327,7 +327,7 @@ svg{
 .hero-second {
   position: absolute;
   bottom: 45%;
-  right: 10%;
+  right: 8%;
 }
 
 .hero-second-subheading{
@@ -358,4 +358,41 @@ svg{
 
 .green-background {
   background-color: var(--color-green);
+}
+
+@media (max-width: 968px) {
+  .section{
+    width: 100%;
+  }
+  .progress-bar-wrapper-left{
+    right: 0;
+    left: auto;
+  }
+  .hero-wrapper{
+    width: calc(100% - 60px);
+  }
+  .intro-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-weight: 500;
+    font-size: 10px;
+    transform: translate(-50%,-50%);
+  }
+
+  .hero-main {
+    position: absolute;
+    top: 15%;
+    left: 0%;
+  }
+  
+  .hero-main-title{
+    font-size: 30px;
+  }
+
+  .hero-second {
+    position: absolute;
+    bottom: 15%;
+    left: 0%;
+  }
 }

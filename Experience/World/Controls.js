@@ -301,7 +301,7 @@ export default class Controls {
                 
                 // Resets
                 this.room.scale.set(0.07, 0.07, 0.07);
-                this.room.position.set(0, 0, 0);
+                this.room.position.set(-0.2, 0, 0);
                 this.camera.orthoCam.position.set(0, 6.5, 10);
 
                 // First section
