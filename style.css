@@ -1,398 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
- 
- *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
 
-html, body {
-  font-family: "Montserrat", sans-serif;
-  color: var(--text-black);
-}
+/* `dark:` follows the theme class Theme.ts puts on <body>, not the OS setting */
+@custom-variant dark (&:where(.dark-theme, .dark-theme *));
 
-h1,
-section,
-p,
-svg{
-  transition: background-color 0.5s, color 0.5s;
-}
+@theme {
+  --font-sans: "Montserrat Variable", sans-serif;
 
+  /* mobile below this, desktop from it; matches DESKTOP_MIN_WIDTH in Experience/Utils/Sizes.ts */
+  --breakpoint-desktop: 968px;
 
-:root{
-  --text-black: #333633;
-  --primary-color: #faf6e7fb;
-  --primary-pink: #e5a1aa;
-  /* Light theme var */
-  --color-text-light: #333332;
-  --color-background-light: #f7f0e1fb;
+  /* fixed colors, the same in both themes */
+  --color-text-black: #333633;
+  --color-cream: #f7f0e1fb;
   --color-pink-light: #e5a1aa;
-  --color-green-light: #7AD0AC;
-  --color-blue-light: #8395CD;
-  /* Dark theme var */
-  --color-text-dark: #FAF4E5;
-  --color-background-dark: #8a9dd6;
-}
 
-.light-theme{
-  --color-text: var(--color-text-light);
-  --color-background: var(--color-background-light);
-  --color-pink: var(--color-pink-light);
-  --color-green: var(--color-green-light);
-  --color-blue: var(--color-blue-light);
-}
+  --animate-load: load 1s ease-in-out infinite;
+  --animate-arrow-bounce: arrow-bounce 0.5s ease-in alternate infinite;
 
-.dark-theme{
-  --color-text: var(--color-text-dark);
-  --color-background: var(--color-background-dark);
-  --color-pink: var(--color-text-dark);
-  --color-green: var(--color-text-dark);
-  --color-blue: var(--color-text-dark);
-}
-
-/* Experience ------------------------------------------------------- */
-
-.experience{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-} */
-
-.experience-canvas{
-  width: 100%;
-  height: 100%;
-}
-
-.hidden{
-  display: none;
-}
-
-/* Preloader ------------------------------------------------------- */
-.preloader{
-  background-color: var(--color-background-light);
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  opacity: 1;
-  z-index: 99999999999999999;
-}
-
-.preloader-wrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.loading{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circle{
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin: 6px;
-  background-color: var(--color-pink-light);
-  animation: load 1s ease-in-out infinite;
-}
-
-.circle:nth-child(2){
-  animation-delay: 0.1s;
-}
-
-.circle:nth-child(3){
-  animation-delay: 0.2s;
-}
-
-@keyframes load {
-  0% {
-    transform: translateY(0)
+  @keyframes load {
+    0%,
+    40% {
+      transform: translateY(0);
+    }
+    20% {
+      transform: translateY(-12px);
+    }
   }
 
-  20% {
-    transform: translateY(-12px)
-  }
-
-  40% {
-    transform: translateY(0)
-  }
-  
-}
-
-
-/* Page ------------------------------------------------------- */
-
-.page{
-  z-index:99999;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.page-wrapper{
-  position: relative;
-}
-
-/* Preloader ------------------------------------------------------- */
-.animatedis{
-  display: inline-block;
-  transform: translateY(100%);
-}
-
-.intro-text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-weight: 500;
-  font-size: 19px;
-  transform: translate(-50%,-50%);
-}
-
-.arrow-svg-wrapper{
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  opacity: 0;
-  color: var(--color-text);
-  transform: translate(-50%, -50%);
-  animation: bounce 0.5s ease-in alternate infinite;
-}
-
-@keyframes bounce {
-  0%{
-    transform: translateY(0);
-  }
-
-  100%{
-    transform: translateY(8px);
+  @keyframes arrow-bounce {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(8px);
+    }
   }
 }
 
-/* Toggle Bar ------------------------------------------------------- */
-.toggle-bar{
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  top: 48px;
-  right: 48px;
-  opacity: 0;
-  z-index: 9999999999999999;
+/* theme colors, swapped by the body class */
+@theme inline {
+  --color-ink: var(--theme-text);
+  --color-panel: var(--theme-background);
+  --color-accent-pink: var(--theme-pink);
+  --color-accent-green: var(--theme-green);
+  --color-accent-blue: var(--theme-blue);
 }
 
-.sun-wrapper, 
-.moon-wrapper{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-text);
-}
-
-.toggle-button{
-  cursor: pointer;
-  position: relative;
-  width: 56px;
-  height: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-pink);
-  border-radius: 999px;
-  margin: 0px 16px;
-  border: none;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.toggle-circle{
-  position: absolute;
-  left: 6px;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  background-color: var(--color-background);
-  transition: all 0.2s ease-in-out;
-}
-
-.toggle-button:hover .toggle-circle{
-  transform: scale(0.9);
-}
-
-.slide{
-  left: 28px;
-}
-
-/* Section Formatting ----------------------------------------- */
-.section-margin{
-  height: 2500px;
-  width: 100%;
-}
-
-.section{
-  width: 50%;
-  padding: 500px 2%;
-  margin: 0;
-  background-color: var(--color-background);
-}
-
-.left{
-  margin-right: auto;
-  border-top-right-radius: 700px 700px;
-  border-bottom-right-radius: 0px 0px;
-}
-
-.right{
-  margin-left: auto;
-  border-top-left-radius: 700px 700px;
-  border-bottom-left-radius: 0px 0px;
-}
-.section-intro-wrapper{
-  position: relative;
-  padding: 20% 5%;
-  border-bottom: 2px solid var(--color-pink);
-  padding-bottom: 400px;
-}
-
-.section-title-text{
-  font-size: 40px;
-  font-weight: 500;
-  transform-origin: left;
-  border-bottom: 2px solid var(--color-pink);
-  color:var(--color-pink);
-}
-
-.section-number{
-  position: absolute;
-  bottom: 15px;
-  right: 0;
-  color: var(--color-pink);
-  font-size: 25px;
-}
-
-.section-detail-wrapper{
-  margin: 50px 80px;
-}
-
-.section-heading{
-  margin-top: 120px;
-  font-size: 22px;
-  font-weight: bold;
-  color: var(--color-text);
-}
-
-.section-text{
-  word-spacing: 1px;
-  line-height: 1.7;
-  margin-top: 15px;
-  font-size: 18px;
-  color: var(--color-text);
-  text-align: justify;
-}
-
-/* Hero ------------------------------------------------------- */
-.hero{
-  width: 100vw;
-  height: 100vh;
-}
-
-.hero-wrapper{
-  position: relative;
-  height: 100%;
-  width: calc(100% - 160px);
-  margin: 0 auto;
-  max-width: 1300px;
-  color: var(--color-text);
-}
-
-.hero-main {
-  position: absolute;
-  top: 60%;
-  left: 10%;
-}
-
-.hero-main-title{
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.hero-main-description{
-  font-size: 20px;
-}
-
-.hero-second {
-  position: absolute;
-  bottom: 45%;
-  right: 8%;
-}
-
-.hero-second-subheading{
-  font-size: 35px;
-}
-
-
-/* Other colours override */
-.blue-text {
-  color: var(--color-blue);
-}
-
-.blue-border {
-  border-color: var(--color-blue);
-}
-
-.blue-background {
-  background-color: var(--color-blue);
-}
-
-.green-text {
-  color: var(--color-green);
-}
-
-.green-border {
-  border-color: var(--color-green);
-}
-
-.green-background {
-  background-color: var(--color-green);
-}
-
-@media (max-width: 968px) {
-  .section{
-    width: 100%;
-  }
-  .progress-bar-wrapper-left{
-    right: 0;
-    left: auto;
-  }
-  .hero-wrapper{
-    width: calc(100% - 60px);
-  }
-  .intro-text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-weight: 500;
-    font-size: 10px;
-    transform: translate(-50%,-50%);
+@layer base {
+  .light-theme {
+    --theme-text: #333332;
+    --theme-background: #f7f0e1fb;
+    --theme-pink: #e5a1aa;
+    --theme-green: #7ad0ac;
+    --theme-blue: #8395cd;
   }
 
-  .hero-main {
-    position: absolute;
-    top: 15%;
-    left: 0%;
-  }
-  
-  .hero-main-title{
-    font-size: 30px;
+  .dark-theme {
+    --theme-text: #faf4e5;
+    --theme-background: #8a9dd6;
+    --theme-pink: #faf4e5;
+    --theme-green: #faf4e5;
+    --theme-blue: #faf4e5;
   }
 
-  .hero-second {
-    position: absolute;
-    bottom: 15%;
-    left: 0%;
+  h1,
+  section,
+  p,
+  svg {
+    transition:
+      background-color 0.5s,
+      color 0.5s;
+  }
+}
+
+@layer components {
+  /* per-letter spans made by convertDivsToSpans.ts. GSAP animates them through `transform`,
+     which Tailwind's translate utilities don't use (they set the separate `translate` property) */
+  .animatedis {
+    display: inline-block;
+    transform: translateY(100%);
   }
 }

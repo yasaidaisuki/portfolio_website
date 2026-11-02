@@ -26,19 +26,27 @@ That is all from me! Please enjoy this website. If you would like to use this te
 
 ## Technologies: :desktop_computer:	
 
-Three.JS, 
+Three.JS,
 GSAP (web animations),
+Lenis (smooth scrolling),
+Tailwind CSS,
 Blender (Model),
-Javascript
+TypeScript + Vite
 
 ## How to run: :point_down:
+Needs Node 20.19+ or 22.12+.
 ```
 git clone
 
-npm i 
+npm i
 
-npm run dev 
+npm run dev        # local dev server
+npm run build      # type-check, then build to dist/
+npm run typecheck  # type-check only
 ```
+
+## Code structure: :file_folder:
+`Experience/Experience.ts` is the composition root: `main.ts` creates it once, and it builds every part (sizes, time, camera, renderer, resources, theme, world, preloader, controls) and passes each one only what it uses through its constructor.
 
 
 ## Inspired by: :cloud:

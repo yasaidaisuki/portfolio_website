@@ -1,4 +1,5 @@
-export default function (element) {
+// wraps each character in its own span so the intro can animate letters one by one
+export default function convertDivsToSpans(element: HTMLElement): HTMLElement {
     element.style.overflow = "hidden";
     element.innerHTML = element.innerText
         .split("")
